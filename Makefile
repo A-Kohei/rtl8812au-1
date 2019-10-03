@@ -74,6 +74,7 @@ CONFIG_REDUCE_TX_CPU_LOADING = n
 CONFIG_BR_EXT = y
 CONFIG_TDLS = n
 CONFIG_WIFI_MONITOR = y
+CONFIG_SIGNAL_DISPLAY_DBM = y
 # If you are setting up AP (e.g. by hostapd) in 802.11ac mode, you may have to choose 'y' below.
 # Otherwise some channels may be  flagged 'NO-IR' (i.e. Passive scanning) by the driver.
 # Please check your country's regulatory domain first,
@@ -107,7 +108,7 @@ CONFIG_RTW_SDIO_PM_KEEP_POWER = y
 ###################### MP HW TX MODE FOR VHT #######################
 CONFIG_MP_VHT_HW_TX_MODE = n
 ###################### Platform Related #######################
-CONFIG_PLATFORM_I386_PC = y
+CONFIG_PLATFORM_I386_PC = n
 CONFIG_PLATFORM_ANDROID_X86 = n
 CONFIG_PLATFORM_ANDROID_INTEL_X86 = n
 CONFIG_PLATFORM_OPENWRT_NEO2 = n
@@ -155,7 +156,7 @@ CONFIG_PLATFORM_ARM_RTD299X = n
 CONFIG_PLATFORM_ARM_SPREADTRUM_6820 = n
 CONFIG_PLATFORM_ARM_SPREADTRUM_8810 = n
 CONFIG_PLATFORM_ARM_WMT = n
-CONFIG_PLATFORM_ARM_RPI = n
+CONFIG_PLATFORM_ARM_RPI = y
 CONFIG_PLATFORM_ARM64_RPI = n
 CONFIG_PLATFORM_ARM_ODROIDC2 = n
 CONFIG_PLATFORM_TI_DM365 = n
@@ -629,6 +630,10 @@ endif
 
 ifeq ($(CONFIG_WIFI_MONITOR), y)
 EXTRA_CFLAGS += -DCONFIG_WIFI_MONITOR
+endif
+
+ifeq ($(CONFIG_SIGNAL_DISPLAY_DBM),y)
+EXTRA_CFLAGS += -DCONFIG_SIGNAL_DISPLAY_DBM
 endif
 
 ifeq ($(CONFIG_MCC_MODE), y)
